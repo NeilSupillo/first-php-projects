@@ -4,7 +4,6 @@ body {
 }
 
 .form-signin {
-  max-width: 330px;
   padding: 1rem;
 }
 
@@ -29,4 +28,14 @@ body {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+form {
+  margin-bottom: 2rem;
+}
+.col {
+  min-width: 350px;
+}
+.error {
+  font-size: 2rem;
 }
