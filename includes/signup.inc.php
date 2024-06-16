@@ -18,10 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["empty_input"] = "Fill in all fields";
         }
         if (is_email_invalid($email)) {
-            $errors["invalid_email"] = "Invalid email used!";
+            $errors["invalid_email"] = "Invalid email";
         }
         if (is_username_taken($pdo, $username)) {
-            $errors["username_taken"] = "Username already taken";
+            $errors["username_taken"] = "Username taken";
         }
         if (is_email_registered($pdo, $email)) {
             $errors["email_used"] = "Email already registered";
@@ -41,8 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
         create_user($pdo, $email, $username, $pwd);
+
         header("Location: ../index.php?signup=success");
         //echo "line 41";
+        //$errors = [];
+
         die();
 
         $pdo = null;

@@ -23,21 +23,9 @@ require_once 'includes/signup_mvc/signup_view.inc.php';
             <form action="includes/signup.inc.php" method="post" class="col">
 
                 <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
-                    <label for="floatingInput">Username</label>
-                </div>
-                <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-                    <label for="floatingInput">Email address</label>
-                </div>
-
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="pwd">
-                    <label for="floatingPassword">Password</label>
-                </div>
-
-
+                <?php
+                signup_inputs();
+                ?>
                 <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
 
             </form>
