@@ -6,9 +6,6 @@ function signup_inputs()
 {
 
     if (isset($_SESSION["signup_data"]["username"]) && !isset($_SESSION["errors_signup"]["username_taken"])) {
-        //echo $_SESSION["signup_data"]["username"];
-        //echo $_SESSION["errors_signup"]["username_taken"];
-        // echo $_SESSION["signup_data"]["email"];
         echo '<div class="form-floating">
     <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" value="' . $_SESSION["signup_data"]["username"] . '">
     <label for="floatingInput">Username</label>
@@ -23,7 +20,6 @@ function signup_inputs()
 
 
     if (isset($_SESSION["signup_data"]["email"]) && !isset($_SESSION["errors_signup"]["email_used"]) && !isset($_SESSION["errors_signup"]["invalid_email"])) {
-        echo $_SESSION["signup_data"]["email"];
         echo '<div class="form-floating">
     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="' . $_SESSION["signup_data"]["email"] . '">
     <label for="floatingInput">Email address</label>
@@ -34,7 +30,6 @@ function signup_inputs()
     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
     <label for="floatingInput">Email address</label>
 </div>';
-        unset($_SESSION["signup_data"]);
     }
 
     echo '<div class="form-floating">
@@ -56,6 +51,6 @@ function check_signup_errors()
         unset($_SESSION['errors_signup']);
     } else if (isset($_GET["signup"]) && $_GET["signup"] === "success") {
         echo '<br>';
-        echo '<p class="form-success">Signup success!</p>';
+        echo '<p id="signup-success" class="form-success">Signup success!</p>';
     }
 }

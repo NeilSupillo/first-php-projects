@@ -7,9 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     try {
-        require_once 'dbh.inc.php';
-        require_once 'signup_mvc/signup_model.inc.php';
-        require_once 'signup_mvc/signup_contr.inc.php';
+
+        require_once '../config/dbh.inc.php';
+        require_once '../models/signup_model.inc.php';
+        require_once '../controllers/signup_contr.inc.php';
 
         //error handlers
         $errors = [];
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (is_email_registered($pdo, $email)) {
             $errors["email_used"] = "Email already registered";
         }
-        require_once 'config_session.inc.php';
+        require_once '../config/config_session.inc.php';
 
         if ($errors) {
             $_SESSION["errors_signup"] = $errors;
@@ -37,12 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ];
             $_SESSION["signup_data"] = $signupData;
 
-            header("Location: ../index.php");
+            header("Location: index.php");
             die();
         }
         create_user($pdo, $email, $username, $pwd);
-
-        header("Location: ../index.php?signup=success");
+        header("Location: index.php?signup=success");
         //echo "line 41";
         //$errors = [];
 
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 } else {
 
-    header("Location: ../index.php");
+    header("Location: index.php");
     //echo "line 41";
     die();
 }
